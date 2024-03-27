@@ -53,12 +53,39 @@ app.post("/posts",(req,res)=>{  //After getting "add Request" from "new.ejs" as 
     console.log(req.body);
     res.redirect('/posts')
 })
+// UUID - Universally Unique Identifier
 
 app.get("/posts/:id",(req,res)=>{
-    let {id} = req.params
+    let {id} = req.params.id
     let post = posts.find((p)=> id === p.id) //when Single thing to pass, Don't use Curly braces inside Arrow Function else Throw Error
     console.log(post)
     res.render('id.ejs',{post})
 })
 
-// UUID - Universally Unique Identifier
+// POST- Create, GET- Read, PUT- Update, DELETE- Delete (CRUD Operations)
+// PATCH: Submits a partial modification to a resource. If you only need to update one field for the resource.
+
+app.patch("/posts/:id",(req,res)=>{
+    let id  = req.params.id;
+    let  newContent = req.body.content;
+    let post = posts.find((p) => id === p.id)
+    post.content = newContent
+    console.log(post)
+    res.send("Patch request has been sended")
+})
+// a) req.body
+// Generally used in POST/PUT requests.
+// Use it when you want to send sensitive data(eg. form data) or super long JSON data to the server.
+
+// b) req.params
+// These are properties attached to the url i.e named route parameters. 
+
+// c) req.query
+// req.query is mostly used for searching,sorting, filtering, pagination, e.t.c
+
+app.get("/posts/:id/edit",(req,res)=>{
+    let id = req.params.id;  //OR "let {id} = req.params" this is Destructring, means directly extracting id's parameters from parameters
+    let post = posts.find((p)=> id === p.id)
+    res.render('edit.ejs', {post})
+}) 
+ 

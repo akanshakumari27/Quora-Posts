@@ -14,6 +14,7 @@
         <h3> @<%= post.username %></h3>
         <p><%= post.content %></p>
         <a href="http://localhost:8080/posts/<%= post.id %>"><button>See in Detail</button></a> 
+        <a href="http://localhost:8080/posts/<%= post.id %>/edit"><button>Edit</button></a>
     </div>  <!--Need to write full URL, Otherwise won't work -->
     <% } %>
     <a href="/posts/new"><button>Create New Post</button></a>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+</head>
+<body>
+    <h2>Username: @<%= post.username %></h2>
+    <h3>User ID: <%= post.id %> </h3>
+    <form>
+    <textarea rows="10" cols="35"><%= post.content %></textarea>
+    <button>Submit</button>
+    <!-- But through HTML page, we can only send "post and get" request, but to update Existing content we want to send "patch" request -->
+    <!-- We will use "method-override" to change/overide "post request to patch request"-->
+    </form>
+</body>
+</html>
